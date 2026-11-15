@@ -1,0 +1,213 @@
+// ASTRA HEALTH - Prisma Schema
+// Database design strictly follows Section 7 of the ASTRA HEALTH blueprint:
+// Tables: astronauts, health_baselines, vital_readings, sleep_logs, mood_logs,
+//         exercise_logs, radiation_events, radiation_readings, alerts,
+//         nasa_datasets, research_records, sync_logs
+//
+// Data engineering rule: Every record carries data_origin (NASA_PUBLIC, SIMULATED,
+// MANUAL, DEVICE), timestamps, units, and quality_status to prevent confusing
+// NASA research data with crew telemetry.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Astronaut {
+  id                String             @id @default(cuid())
+  name              String
+  mission_id        String             @default("msn-artemis-demo")
+  role              String
+  created_at        DateTime           @default(now())
+  updated_at        DateTime           @updatedAt
+
+  baselines         HealthBaseline[]
+  vitals            VitalReading[]
+  sleep_logs        SleepLog[]
+  mood_logs         MoodLog[]
+  exercise_logs     ExerciseLog[]
+  radiation_readings RadiationReading[]
+  alerts            Alert[]
+
+  @@map("astronauts")
+}
+
+model HealthBaseline {
+  id               String    @id @default(cuid())
+  astronaut_id     String
+  metric           String    // heart_rate, spo2, systolic_bp, body_temp, respiratory_rate
+  baseline_value   Float
+  unit             String
+  reference_period String    @default("Pre-flight reference period")
+  data_origin      String    @default("SIMULATED")
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+
+  astronaut        Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@unique([astronaut_id, metric])
+  @@map("health_baselines")
+}
+
+model VitalReading {
+  id               String    @id @default(cuid())
+  astronaut_id     String
+  metric           String    // heart_rate, spo2, systolic_bp, body_temp, respiratory_rate
+  value            Float
+  unit             String
+  recorded_at      DateTime  @default(now())
+  retrieved_at     DateTime  @default(now())
+  data_origin      String    @default("SIMULATED") // NASA_PUBLIC, SIMULATED, MANUAL, DEVICE
+  quality_status   String    @default("validated") // validated, needs review, estimated
+  source_name      String    @default("ASTRA Telemetry Simulator")
+  source_record_id String?
+  source_url       String?
+
+  astronaut        Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, metric, recorded_at])
+  @@map("vital_readings")
+}
+
+model SleepLog {
+  id             String    @id @default(cuid())
+  astronaut_id   String
+  duration_hours Float
+  quality        String    @default("good") // good, fair, poor
+  recorded_at    DateTime  @default(now())
+  data_origin    String    @default("MANUAL") // SIMULATED, MANUAL
+  quality_status String    @default("validated")
+
+  astronaut      Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, recorded_at])
+  @@map("sleep_logs")
+}
+
+model MoodLog {
+  id             String    @id @default(cuid())
+  astronaut_id   String
+  mood           Int       // 1 - 10
+  stress         Int       // 1 - 10
+  fatigue        Int       // 1 - 10
+  recorded_at    DateTime  @default(now())
+  data_origin    String    @default("MANUAL")
+  quality_status String    @default("validated")
+
+  astronaut      Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, recorded_at])
+  @@map("mood_logs")
+}
+
+model ExerciseLog {
+  id             String    @id @default(cuid())
+  astronaut_id   String
+  activity_type  String    // Treadmill (T2), Cycle ergometer, Resistance (ARED)
+  duration_min   Int
+  intensity      String    @default("moderate") // low, moderate, high, self-reported
+  recorded_at    DateTime  @default(now())
+  data_origin    String    @default("MANUAL")
+  quality_status String    @default("validated")
+
+  astronaut      Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, recorded_at])
+  @@map("exercise_logs")
+}
+
+model RadiationEvent {
+  id               String    @id @default(cuid())
+  source           String    @default("NASA DONKI")
+  event_type       String    // SEP, FLR, CME, GST
+  source_record_id String?
+  start_time       DateTime?
+  end_time         DateTime?
+  details          String    // JSON encoded details
+  data_origin      String    @default("NASA_PUBLIC")
+  quality_status   String    @default("validated")
+  source_url       String?   @default("https://ccmc.gsfc.nasa.gov/DONKI/")
+  retrieved_at     DateTime  @default(now())
+
+  @@index([event_type, start_time])
+  @@map("radiation_events")
+}
+
+model RadiationReading {
+  id             String    @id @default(cuid())
+  astronaut_id   String
+  dose           Float     // Dose equivalent
+  unit           String    @default("mSv")
+  recorded_at    DateTime  @default(now())
+  data_origin    String    @default("SIMULATED") // Personal dosimeter simulation
+  quality_status String    @default("validated")
+  source_name    String    @default("Crew Active Dosimeter (Simulated)")
+
+  astronaut      Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, recorded_at])
+  @@map("radiation_readings")
+}
+
+model Alert {
+  id             String    @id @default(cuid())
+  astronaut_id   String
+  severity       String    // NORMAL, WATCH, ACT
+  metric         String    // heart_rate, spo2, behavioral, radiation, etc.
+  reason         String    // Explanation and reason codes
+  reason_codes   String    @default("[]") // JSON array of codes: DEVIATION_ACT_REPEATED, etc.
+  status         String    @default("open") // open, acknowledged, resolved
+  data_origin    String    @default("SIMULATED")
+  created_at     DateTime  @default(now())
+  resolved_at    DateTime?
+
+  astronaut      Astronaut @relation(fields: [astronaut_id], references: [id], onDelete: Cascade)
+
+  @@index([astronaut_id, severity, status])
+  @@map("alerts")
+}
+
+model NasaDataset {
+  id          String   @id @default(cuid())
+  source      String   // NASA OSDR, NASA DONKI, Curiosity RAD, NASA LSDA, NASA NTRS
+  dataset_id  String
+  title       String
+  description String?
+  url         String
+  category    String   // Bone loss, Muscle loss, Cardiovascular, Immune system, Radiation
+  created_at  DateTime @default(now())
+
+  @@unique([source, dataset_id])
+  @@map("nasa_datasets")
+}
+
+model ResearchRecord {
+  id           String   @id @default(cuid())
+  source_id    String   // Reference to NasaDataset or source key
+  source_name  String   // NASA OSDR, NASA NTRS, Curiosity RAD, etc.
+  title        String
+  summary      String
+  citation     String
+  url          String?
+  topics       String   @default("[]") // JSON array
+  data_origin  String   @default("NASA_PUBLIC")
+  retrieved_at DateTime @default(now())
+
+  @@map("research_records")
+}
+
+model SyncLog {
+  id             String   @id @default(cuid())
+  source         String   // NASA DONKI, NASA OSDR, NASA NTRS, Curiosity RAD, NASA LSDA
+  last_synced_at DateTime @default(now())
+  status         String   // ok, error, pending
+  error_message  String?
+  record_count   Int      @default(0)
+
+  @@map("sync_logs")
+}
+

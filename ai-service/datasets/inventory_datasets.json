@@ -1,0 +1,178 @@
+[
+  {
+    "accession": "OSD-569",
+    "title": "Inspiration4 whole blood",
+    "description": "Whole-genome sequencing; clonal hematopoiesis; CBC; long/short-read RNA-seq; epitranscriptomics. Sample: Whole blood. Use: Blood/immune research context; not live vitals. Formats: Study-specific; inspect file records. Units: Assay-specific; CBC analyte units must come from file dictionary",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; blood",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-569",
+    "astra_use": "Blood/immune research context; not live vitals",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-570",
+    "title": "Inspiration4 PBMC",
+    "description": "Single-nuclei RNA-seq; ATAC-seq; single-cell TCR-seq; BCR-seq. Sample: Peripheral blood mononuclear cells. Use: Immune-system research context. Formats: Study-specific. Units: Sequencing/count data; assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; immune cells",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-570",
+    "astra_use": "Immune-system research context",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-571",
+    "title": "Inspiration4 plasma profiling",
+    "description": "Proteomics; extracellular-vesicle proteomics; metabolomics; cfDNA-seq; cfRNA-seq. Sample: Blood plasma. Use: Biomarker research context; not live vitals. Formats: Study-specific. Units: Assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; plasma",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-571",
+    "astra_use": "Biomarker research context; not live vitals",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-572",
+    "title": "Inspiration4 oral, nasal and skin swabs",
+    "description": "Metagenomics; metatranscriptomics. Sample: Skin, oral and nasal swabs. Use: Microbiome research context; lower priority for dashboard. Formats: Study-specific. Units: Sequence/count data; assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human-associated microbiome",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-572",
+    "astra_use": "Microbiome research context; lower priority for dashboard",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-573",
+    "title": "Inspiration4 Dragon capsule environmental swabs",
+    "description": "Metagenomics; metatranscriptomics. Sample: Dragon capsule environmental swabs. Use: Environmental research context; not crew vitals. Formats: Study-specific. Units: Sequence/count data; assay-specific",
+    "source": "NASA OSDR",
+    "category": "Spacecraft microbiome",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-573",
+    "astra_use": "Environmental research context; not crew vitals",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-574",
+    "title": "Inspiration4 deltoid skin and microbiome",
+    "description": "Spatial transcriptomics; metagenomics; metatranscriptomics. Sample: Skin biopsies and swabs. Use: Skin/microbiome research context. Formats: Study-specific. Units: Assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human skin; microbiome",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-574",
+    "astra_use": "Skin/microbiome research context",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-575",
+    "title": "Inspiration4 blood serum metabolic and immune/cardiac biomarker panels",
+    "description": "Comprehensive metabolic panel; cytokine, immune and cardiovascular biomarker panels. Sample: Blood serum. Use: Most relevant I4 biomarker context; not real-time vitals. Formats: Study-specific. Units: Analyte-specific; use units per analyte",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; serum biomarkers",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://ntrs.nasa.gov/api/citations/20230017861/downloads/agu_OSDR_rts_20231207_v3.pdf",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-575",
+    "astra_use": "Most relevant I4 biomarker context; not real-time vitals",
+    "verification_status": "Study ID, sample type and assays verified; filenames, columns, units and sample count pending source-level extraction"
+  },
+  {
+    "accession": "OSD-630",
+    "title": "Inspiration4 stool samples",
+    "description": "Study-specific stool assays; inspect study metadata. Sample: Stool. Use: Gut-health research context. Formats: Study-specific. Units: Assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; gut microbiome",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://science.nasa.gov/reference/osdr-faq/",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-630",
+    "astra_use": "Gut-health research context",
+    "verification_status": "Study ID and sample type verified; detailed assay/files/schema pending source-level extraction"
+  },
+  {
+    "accession": "OSD-656",
+    "title": "Inspiration4 urine samples",
+    "description": "Study-specific urine assays; inspect study metadata. Sample: Urine. Use: Hydration/metabolic research context if relevant variables exist. Formats: Study-specific. Units: Analyte-specific",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; urine",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://science.nasa.gov/reference/osdr-faq/",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-656",
+    "astra_use": "Hydration/metabolic research context if relevant variables exist",
+    "verification_status": "Study ID and sample type verified; detailed assay/files/schema pending source-level extraction"
+  },
+  {
+    "accession": "OSD-687",
+    "title": "Inspiration4 T-cell data",
+    "description": "Study-specific T-cell assays; inspect study metadata. Sample: T-cells. Use: Immune research context. Formats: Study-specific. Units: Assay-specific",
+    "source": "NASA OSDR",
+    "category": "Human spaceflight; immune cells",
+    "citation": "https://www.nasa.gov/osdr-latest-news-i4-mission-datasets/ ; https://science.nasa.gov/reference/osdr-faq/",
+    "url": "https://osdr.nasa.gov/bio/repo/data/studies/OSD-687",
+    "astra_use": "Immune research context",
+    "verification_status": "Study ID and sample category verified; detailed assay/files/schema pending source-level extraction"
+  },
+  {
+    "accession": "MSL-M-RAD-3-RDR-V1.0",
+    "title": "Mars Science Laboratory RAD calibrated RDR",
+    "description": "Calibrated RAD RDR observations reconstructed from EDR. Sample: Instrument observations; no human subjects. Use: Environmental radiation context only; not astronaut personal dosimetry. Formats: ASCII data plus detached ASCII PDS label. Units: Calibrated physical units in product; exact field-unit pairs require label/specification",
+    "source": "NASA PDS PPI",
+    "category": "Radiation environment; Mars rover",
+    "citation": "https://pds.nasa.gov/ds-view/pds/viewProfile.jsp?dsid=MSL-M-RAD-3-RDR-V1.0",
+    "url": "https://pds.nasa.gov/ds-view/pds/viewProfile.jsp?dsid=MSL-M-RAD-3-RDR-V1.0",
+    "astra_use": "Environmental radiation context only; not astronaut personal dosimetry",
+    "verification_status": "Dataset ID, calibrated RDR level, ASCII format, label pairing and rover context verified"
+  },
+  {
+    "accession": "DONKI-SEP",
+    "title": "Solar Energetic Particle event records",
+    "description": "SEP event metadata and linked events. Sample: Event records. Use: Space-weather hazard context; not crew dose. Formats: JSON. Units: Event-specific; not personal dose units",
+    "source": "NASA DONKI",
+    "category": "Space weather",
+    "citation": "https://api.nasa.gov/ ; https://ccmc.gsfc.nasa.gov/DONKI-API/",
+    "url": "https://ccmc.gsfc.nasa.gov/DONKI/",
+    "astra_use": "Space-weather hazard context; not crew dose",
+    "verification_status": "SEP endpoint documented; actual keys/count depend on returned date-range response"
+  },
+  {
+    "accession": "DONKI-CME",
+    "title": "Coronal Mass Ejection event records",
+    "description": "CME event metadata, analysis and linked events. Sample: Event records. Use: Solar event timeline and context. Formats: JSON. Units: Event-specific; not personal dose units",
+    "source": "NASA DONKI",
+    "category": "Space weather",
+    "citation": "https://api.nasa.gov/ ; https://ccmc.gsfc.nasa.gov/DONKI-API/",
+    "url": "https://ccmc.gsfc.nasa.gov/DONKI/",
+    "astra_use": "Solar event timeline and context",
+    "verification_status": "CME endpoint documented; actual keys/count depend on returned date-range response"
+  },
+  {
+    "accession": "DONKI-GST",
+    "title": "Geomagnetic Storm event records",
+    "description": "GST event records. Sample: Event records. Use: Space-weather context; not personal astronaut exposure. Formats: JSON. Units: Event-specific; Kp only where supplied",
+    "source": "NASA DONKI",
+    "category": "Space weather",
+    "citation": "https://api.nasa.gov/ ; https://ccmc.gsfc.nasa.gov/DONKI-API/",
+    "url": "https://ccmc.gsfc.nasa.gov/DONKI/",
+    "astra_use": "Space-weather context; not personal astronaut exposure",
+    "verification_status": "DONKI endpoint family documented; verify current GST schema in API docs"
+  },
+  {
+    "accession": "NLSP/LSDA (archive; no single study accession)",
+    "title": "NASA Life Sciences Data Archive / Life Sciences Portal",
+    "description": "Study-specific; catalogue tags include Actiwatch, bone, calcium, chronobiology, physiology and health. Sample: Study-specific. Use: Locate sleep/Actiwatch, chronobiology, bone and physiology research. Formats: Study-specific. Units: Study-specific",
+    "source": "NASA NLSP/LSDA",
+    "category": "Human, plant and animal flight and flight-analog research",
+    "citation": "https://data.nasa.gov/dataset/nasa-life-sciences-portal-nlsp",
+    "url": "https://nlsp.nasa.gov/explore/lsdahome",
+    "astra_use": "Locate sleep/Actiwatch, chronobiology, bone and physiology research",
+    "verification_status": "Archive scope and topic tags verified; individual study IDs/files/schema not enumerated"
+  },
+  {
+    "accession": "OSD-21; OSD-99; OSD-101; OSD-103; OSD-104; OSD-105; OSD-530",
+    "title": "RR1/JAXA CFE and related spaceflight omics accessions cited in a paper",
+    "description": "Published paper identifies RNA-seq datasets for RR1 and JAXA CFE within these accessions. Sample: Varies by accession. Use: Optional biological research background; check organism/tissue. Formats: Study-specific. Units: Assay-specific",
+    "source": "NASA OSDR",
+    "category": "Spaceflight biology; mixed organisms/assays",
+    "citation": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11166946/ ; https://science.nasa.gov/reference/osdr-faq/",
+    "url": "https://osdr.nasa.gov/bio/repo/",
+    "astra_use": "Optional biological research background; check organism/tissue",
+    "verification_status": "Accession group cited by paper; individual titles, organisms, files and schema pending source-level extraction here"
+  }
+]

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b1d">
+<title>ASTRA HEALTH — NASA Space Apps 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="side-brand">
+      <div class="side-logo">✚</div>
+      <div>
+        <div class="side-name">ASTRA HEALTH</div>
+        <div class="side-sub">NASA SPACE APPS 2026</div>
+      </div>
+    </div>
+    <nav class="side-nav" id="tabs">
+      <button data-screen="dashboard" class="active"><span class="ic">⌂</span> Mission Command</button>
+      <button data-screen="physio"><span class="ic">♥</span> Physiological</button>
+      <button data-screen="radiation"><span class="ic">☢</span> Radiation Center</button>
+      <button data-screen="behavioral"><span class="ic">◉</span> Behavioral Health</button>
+      <button data-screen="assistant"><span class="ic">✦</span> AI Assistant</button>
+      <button data-screen="reports"><span class="ic">▤</span> Reports &amp; Research</button>
+      <button data-screen="reports" data-goto-library="1"><span class="ic">⛁</span> NASA Data Hub</button>
+    </nav>
+    <div class="side-foot">
+      <div class="side-astro">🧑‍🚀</div>
+      <p>Demo crew data is <strong>SIMULATED</strong>. NASA records are labelled with their source. Not a medical device.</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <header class="topbar">
+      <div>
+        <div class="mission-title">Mission: Orion-1</div>
+        <div class="mission-sub">Long Duration Mission — Cislunar Space · Astronaut Health Monitoring &amp; AI-Assisted Decision Support</div>
+      </div>
+      <div class="topbar-right">
+        <div id="netStatus" class="pill pill-neutral">Checking…</div>
+        <div class="pill pill-ghost">Offline Mode Ready</div>
+        <div class="stat-chip"><span class="stat-label">Mission Day</span><span class="stat-value" id="missionDay">—</span></div>
+        <div class="stat-chip"><span class="stat-label">Crew</span><span class="stat-value" id="crewCount">—</span></div>
+        <div class="stat-chip"><span class="stat-label" id="clock">—</span><span class="stat-value">Local</span></div>
+      </div>
+    </header>
+
+    <div class="honesty-banner">
+      Prototype for the NASA Space Apps Challenge. NASA public research data is <strong>not</strong> live astronaut telemetry.
+      Every record is labelled <span class="tag tag-nasa">NASA_PUBLIC</span> <span class="tag tag-sim">SIMULATED</span>
+      <span class="tag tag-manual">MANUAL</span> or <span class="tag tag-device">DEVICE</span>. ASTRA does not diagnose; alerts are workflow categories from a deterministic rules engine compared with personal baselines.
+    </div>
+
+    <main>
+      <!-- ============ DASHBOARD ============ -->
+      <section id="screen-dashboard" class="screen active">
+        <div class="row row-between">
+          <h2>Crew Health Status</h2>
+          <div class="actions">
+            <label class="inline">Crew member <select id="crewSelect"></select></label>
+            <button id="simTickBtn" class="btn">▶ Simulate live reading (SIMULATED)</button>
+            <button id="refreshDonkiBtn" class="btn btn-ghost">↻ Refresh DONKI events</button>
+          </div>
+        </div>
+        <div id="crewSummary" class="summary-pills"></div>
+        <div id="crewCards" class="crew-row"></div>
+
+        <div class="dash-grid">
+          <div class="card panel-physio">
+            <div class="panel-head"><h3 id="dashPhysioTitle">Physiological Monitoring</h3><span id="dashPhysioSev"></span></div>
+            <div id="dashVitals" class="vital-rows"></div>
+            <div class="chart-title">Heart Rate Trend (recent readings)</div>
+            <div class="canvas-wrap tall"><canvas id="dashHrChart"></canvas></div>
+          </div>
+
+          <div class="card panel-rad">
+            <div class="panel-head"><h3>Space Radiation &amp; Weather</h3><span class="tag tag-nasa">NASA_PUBLIC</span></div>
+            <div id="donkiSummary" class="muted">Not fetched yet.</div>
+            <div id="donkiList"></div>
+            <div id="dashRad"></div>
+            <p class="fineprint">A DONKI event is space-weather context, <strong>not</strong> a crew member's measured radiation dose.</p>
+          </div>
+
+          <div class="card panel-assist">
+            <div class="panel-head"><h3>AI Health Assistant</h3><span class="tag tag-sim">GEMINI 3.8 FLASH · NON-DIAGNOSTIC</span></div>
+            <div class="chips">
+              <button class="chip" data-q="hr">Why is the heart rate high?</button>
+              <button class="chip" data-q="status">Full status</button>
+              <button class="chip" data-q="sleep">Sleep &amp; fatigue</button>
+              <button class="chip" data-q="radiation">Radiation context</button>
+            </div>
+            <div class="form-row mt-2">
+              <input id="dashAskInput" type="text" placeholder="Ask AI Assistant anything about crew health or mission rules..." style="flex:1;">
+              <button id="dashAskBtn" class="btn">Ask AI</button>
+            </div>
+            <div id="dashAssistantOut" class="assistant-out small">Tap a question or ask anything — answers are powered by Gemini with deterministic rules verification.</div>
+            <p class="fineprint">Connected to Gemini 3.8 Flash &amp; NASA Research RAG Knowledge Base.</p>
+          </div>
+
+          <div class="card panel-alerts">
+            <div class="panel-head"><h3>Recent Alerts</h3><span class="muted">deterministic rules engine</span></div>
+            <div id="alertList"></div>
+          </div>
+
+          <div class="card panel-behav">
+            <div class="panel-head"><h3>Crew Behavioral Health</h3><span id="dashBehavSev"></span></div>
+            <div id="dashBehavTiles" class="tiles"></div>
+            <div id="dashBehavNote" class="muted"></div>
+          </div>
+
+          <div class="card panel-nasa">
+            <div class="panel-head"><h3>NASA Data Integration</h3><span class="muted">strictly the blueprint's five sources</span></div>
+            <div id="nasaIntegration"></div>
+            <h4 class="sync-h">Sync &amp; Source Status</h4>
+            <div id="syncStatus"></div>
+          </div>
+        </div>
+
+        <div class="legend-bar">
+          <span class="legend-title">⚙ Alert Engine (Deterministic)</span>
+          <span class="legend-item"><span class="sev-badge sev-NORMAL">NORMAL</span> Deviation &lt; 15% → Continue monitoring</span>
+          <span class="legend-item"><span class="sev-badge sev-WATCH">WATCH</span> 15–30% or repeated small → Recheck, review context</span>
+          <span class="legend-item"><span class="sev-badge sev-RECHECK">RECHECK</span> Single ≥ 30% (no repeat) → Take a repeat reading</span>
+          <span class="legend-item"><span class="sev-badge sev-ACT">ACT</span> ≥ 30% with confirmed repeat → Follow medical protocol</span>
+        </div>
+      </section>
+
+      <!-- ============ PHYSIOLOGICAL ============ -->
+      <section id="screen-physio" class="screen">
+        <h2>Physiological Monitoring</h2>
+        <p class="muted">Heart rate, SpO₂, blood pressure, temperature and respiratory rate, each compared with the selected crew member's <strong>personal baseline</strong>. Deviation bands (WATCH ≥15%, ACT ≥30% repeated) are prototype workflow configuration — not clinical thresholds.</p>
+        <div id="physioCards" class="grid grid-2"></div>
+        <div class="card">
+          <h3>Add a reading <span class="tag tag-manual">MANUAL</span></h3>
+          <form id="vitalForm" class="form-row">
+            <label>Metric <select id="vitalMetric"></select></label>
+            <label>Value <input id="vitalValue" type="number" step="0.1" required></label>
+            <label>Quality
+              <select id="vitalQuality"><option value="validated">validated</option><option value="needs review">needs review</option><option value="estimated">estimated</option></select>
+            </label>
+            <button class="btn" type="submit">Save reading</button>
+          </form>
+          <div id="vitalFormMsg" class="muted"></div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <div class="row row-between">
+            <h3>AI Physiological Trend Evaluation</h3>
+            <span class="tag tag-sim">GEMINI 3.8 FLASH</span>
+          </div>
+          <p class="muted">Synthesizes the selected crew member's readings against personal baseline and Inspiration4 OSD-575 / OSD-569 panels.</p>
+          <button id="aiPhysioBtn" class="btn">✦ AI Analyze Vital Trends</button>
+          <div id="aiPhysioOut" class="assistant-out small" style="display:none; margin-top:10px;"></div>
+        </div>
+      </section>
+
+      <!-- ============ RADIATION ============ -->
+      <section id="screen-radiation" class="screen">
+        <h2>Radiation Command Center</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>NASA DONKI Event Feed <span class="tag tag-nasa">NASA_PUBLIC</span></h3>
+            <div class="form-row">
+              <label>Event type
+                <select id="donkiType"><option value="SEP">SEP — Solar Energetic Particles</option><option value="FLR">FLR — Solar Flares</option><option value="CME">CME — Coronal Mass Ejections</option></select>
+              </label>
+              <button id="donkiFetchBtn" class="btn">Fetch last 30 days</button>
+            </div>
+            <div id="donkiFeedStatus" class="muted">Not fetched yet.</div>
+            <div id="donkiFeed"></div>
+            <p class="fineprint">Workflow on a significant event: notify the crew, review the mission's approved protective-action procedure, and log the event. ASTRA never converts a DONKI event into a personal dose.</p>
+          </div>
+          <div class="card">
+            <h3>Curiosity RAD — Historical Mars Radiation <span class="tag tag-nasa">NASA_PUBLIC</span></h3>
+            <div id="radPanel"></div>
+            <h3>NASA LSDA — Life Sciences Catalogue</h3>
+            <div id="lsdaPanel"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <div class="row row-between">
+            <h3>AI Space Weather &amp; Shielding Advisory</h3>
+            <span class="tag tag-nasa">DONKI + RAD + GEMINI</span>
+          </div>
+          <p class="muted">Translates detected solar events and Curiosity RAD benchmarks into mission operational advisories.</p>
+          <button id="aiRadiationBtn" class="btn">✦ AI Evaluate Radiation Situation</button>
+          <div id="aiRadiationOut" class="assistant-out small" style="display:none; margin-top:10px;"></div>
+        </div>
+      </section>
+
+      <!-- ============ BEHAVIORAL ============ -->
+      <section id="screen-behavioral" class="screen">
+        <h2>Behavioral Health</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Daily check-in <span class="tag tag-manual">MANUAL</span></h3>
+            <form id="checkinForm" class="form-col">
+              <label>Sleep last night (hours) <input id="ciSleep" type="number" step="0.1" min="0" max="24" required></label>
+              <label>Sleep quality
+                <select id="ciSleepQuality"><option>good</option><option>fair</option><option>poor</option></select>
+              </label>
+              <label>Mood (1–10) <input id="ciMood" type="number" min="1" max="10" required></label>
+              <label>Stress (1–10) <input id="ciStress" type="number" min="1" max="10" required></label>
+              <label>Fatigue (1–10) <input id="ciFatigue" type="number" min="1" max="10" required></label>
+              <label>Exercise today
+                <select id="ciExercise"><option value="">None logged</option><option>Treadmill (T2)</option><option>Cycle ergometer</option><option>Resistance (ARED)</option></select>
+              </label>
+              <label>Exercise duration (min) <input id="ciExerciseMin" type="number" min="0" max="600"></label>
+              <button class="btn" type="submit">Save check-in</button>
+            </form>
+            <div id="checkinMsg" class="muted"></div>
+          </div>
+          <div class="card">
+            <h3>Trends — selected crew member</h3>
+            <div id="behavioralStatus"></div>
+            <div id="behavioralHistory"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <div class="row row-between">
+            <h3>AI Circadian &amp; Fatigue Analysis</h3>
+            <span class="tag tag-nasa">NASA LSDA ACTIWATCH GROUNDING</span>
+          </div>
+          <p class="muted">Analyzes cumulative sleep deficits and fatigue self-reports to recommend operational rest scheduling.</p>
+          <button id="aiBehavioralBtn" class="btn">✦ AI Evaluate Circadian &amp; Fatigue Pattern</button>
+          <div id="aiBehavioralOut" class="assistant-out small" style="display:none; margin-top:10px;"></div>
+        </div>
+      </section>
+
+      <!-- ============ ASSISTANT ============ -->
+      <section id="screen-assistant" class="screen">
+        <h2>AI Health Assistant</h2>
+        <p class="muted">The assistant <strong>explains</strong> the rules engine's output and retrieves cited NASA research. It never diagnoses and never overrides the engine. Explanations below are generated locally from engine reason codes — no internet or AI key needed. Powered by Gemini 3.8 Flash with verified factual grounding.</p>
+        <div class="card">
+          <h3>Ask about the selected crew member</h3>
+          <div class="chips">
+            <button class="chip" data-q="status">What is their current status?</button>
+            <button class="chip" data-q="compare">Compare all crew members</button>
+            <button class="chip" data-q="hr">Explain the heart-rate trend</button>
+            <button class="chip" data-q="sleep">Explain the sleep &amp; fatigue pattern</button>
+            <button class="chip" data-q="radiation">What space-weather context should we consider?</button>
+            <button class="chip" data-q="summary">Give me today's summary</button>
+          </div>
+          <div class="form-row">
+            <label class="grow">Ask any space medicine or mission health question
+              <input id="aiCustomQuery" type="text" placeholder="e.g. Why is Commander's heart rate elevated? What are Inspiration4 OSD-575 cardiac findings?">
+            </label>
+            <button id="aiCustomBtn" class="btn">Ask Gemini AI</button>
+          </div>
+          <div class="form-row">
+            <label class="grow">Research question for NASA NTRS / OSDR
+              <input id="researchQuery" type="text" placeholder="e.g. bone loss microgravity countermeasures">
+            </label>
+            <button id="researchBtn" class="btn">Search NASA research</button>
+          </div>
+          <div id="assistantOut" class="assistant-out"></div>
+        </div>
+      </section>
+
+      <!-- ============ REPORTS & RESEARCH ============ -->
+      <section id="screen-reports" class="screen">
+        <div class="row row-between">
+          <h2>Reports &amp; Research Library</h2>
+          <div class="actions">
+            <button id="aiDailyBriefingBtn" class="btn">✦ AI Executive Medical Briefing</button>
+            <button id="printReportBtn" class="btn">🖨 Print / save daily report as PDF</button>
+            <button id="resetDemoBtn" class="btn btn-ghost">Reset demo data</button>
+          </div>
+        </div>
+        <div id="aiDailyBriefingOut" class="assistant-out small" style="display:none; margin-bottom:14px;"></div>
+        <div class="card" id="dailyReport"></div>
+        <div class="card">
+          <h3>Alert History</h3>
+          <div id="alertHistory"></div>
+        </div>
+        <div class="card" id="inventoryCard">
+          <div class="row row-between">
+            <h3>NASA Master Dataset Inventory (ASTRA_HEALTH_NASA_Dataset_Inventory.csv)</h3>
+            <span class="tag tag-nasa">16 MASTER DATASETS</span>
+          </div>
+          <p class="muted">All 16 research datasets required by the specification: Inspiration4 multi-omics suite (OSD-569 through OSD-575, OSD-630, OSD-656, OSD-687), Curiosity RAD Mars surface archive, DONKI space weather events, and NASA LSDA/NLSP.</p>
+          <div class="form-row">
+            <label class="grow">Search Inventory <input id="invSearchInput" type="text" placeholder="Filter by ID, topic, or keyword (e.g. OSD-575, troponin, Mars, sleep)..."></label>
+            <label>Domain
+              <select id="invDomainFilter">
+                <option value="ALL">All Domains (16)</option>
+                <option value="Inspiration4">Inspiration4 Multi-Omics (10)</option>
+                <option value="Radiation">Planetary Surface &amp; Space Weather (4)</option>
+                <option value="Archive">Life Sciences Archive (LSDA/NLSP) (1)</option>
+                <option value="CFE">Cell Biology Flight Analog (1)</option>
+              </select>
+            </label>
+          </div>
+          <div id="inventoryTableContainer" style="overflow-x:auto;"></div>
+          <div id="biomarkersContainer" class="mt-3"></div>
+        </div>
+
+        <div class="card" id="libraryCard">
+          <h3>NASA Research Library <span class="tag tag-nasa">NASA_PUBLIC</span></h3>
+          <div class="form-row">
+            <label class="grow">Topic <input id="libraryQuery" type="text" value="bone loss microgravity"></label>
+            <button id="libraryBtn" class="btn">Search OSDR + NTRS</button>
+          </div>
+          <div id="libraryStatus" class="muted">Search to load live NASA records. Results are cached locally for offline viewing and labelled with retrieval time.</div>
+          <div id="libraryResults"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      ASTRA HEALTH prototype · Data sources strictly per blueprint: NASA OSDR · NASA DONKI · Curiosity RAD (PDS) · NASA LSDA · NASA NTRS ·
+      Simulated crew telemetry is labelled SIMULATED · Not a medical device · Demo data is synthetic.
+    </footer>
+  </div>
+</div>
+
+<script src="js/rules.js"></script>
+<script src="js/store.js"></script>
+<script src="js/simulator.js"></script>
+<script src="js/nasa.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

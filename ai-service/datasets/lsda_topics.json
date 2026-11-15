@@ -1,0 +1,30 @@
+[
+  {
+    "accession": "LSDA-BONE-01",
+    "title": "NASA Life Sciences Archive: Longitudinal Skeletal Mineral Tracking in Microgravity",
+    "description": "Pre-, inflight, and post-flight dual-energy X-ray absorptiometry (DXA) scans, quantitative computed tomography, and biochemical markers of bone resorption.",
+    "source": "NASA LSDA",
+    "category": "Bone loss",
+    "citation": "NASA Life Sciences Data Archive (LSDA), Johnson Space Center",
+    "url": "https://nlsp.nasa.gov/explore/lsdahome"
+  },
+  {
+    "accession": "LSDA-CARDIO-02",
+    "title": "NASA Life Sciences Archive: Orthostatic Intolerance and Carotid Arterial Stiffness",
+    "description": "Continuous ECG, ambulatory blood pressure monitoring, ultrasound carotid distensibility, and post-landing tilt test evaluations across 80+ spaceflights.",
+    "source": "NASA LSDA",
+    "category": "Cardiovascular",
+    "citation": "NASA Life Sciences Data Archive (LSDA), Cardiovascular Laboratory",
+    "url": "https://nlsp.nasa.gov/explore/lsdahome"
+  },
+  {
+    "accession": "LSDA-BEHAV-03",
+    "title": "NASA Life Sciences Archive: Behavioral Health, Sleep Disruption, and Cognitive Fatigue",
+    "description": "Actigraphy records, Psychomotor Vigilance Task (PVT) performance measures, and circadian biomarker shifts in astronauts aboard Skylab, Shuttle, and ISS.",
+    "source": "NASA LSDA",
+    "category": "Behavioral health",
+    "citation": "NASA Life Sciences Data Archive (LSDA), Behavioral Health and Performance",
+    "url": "https://nlsp.nasa.gov/explore/lsdahome"
+  }
+]
+

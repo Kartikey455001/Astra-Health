@@ -1,0 +1,66 @@
+[
+  {
+    "accession": "OSD-661",
+    "title": "Spaceflight-induced transcriptomic and proteomic alterations in human osteoblasts",
+    "description": "Multi-omics evaluation of osteoblast differentiation, alkaline phosphatase activity, and bone mineral matrix synthesis aboard the International Space Station.",
+    "source": "NASA OSDR",
+    "category": "Bone loss",
+    "citation": "NASA Open Science Data Repository (OSD-661), ALSDA/GeneLab",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-661"
+  },
+  {
+    "accession": "OSD-251",
+    "title": "Osteocyte mechanosensing suppression in simulated microgravity and bone resorption pathways",
+    "description": "Fluid shear stress mechanotransduction deficiency in osteocytes under unloading conditions, leading to RANKL up-regulation and osteoclast-mediated bone loss.",
+    "source": "NASA OSDR",
+    "category": "Bone loss",
+    "citation": "NASA Open Science Data Repository (OSD-251), NASA Ames Research Center",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-251"
+  },
+  {
+    "accession": "OSD-310",
+    "title": "Skeletal muscle atrophy and contractile protein degradation during spaceflight",
+    "description": "Biopsy analysis of soleus and gastrocnemius muscle fiber atrophy, ubiquitin-proteasome pathway activation, and functional loss across long-duration missions.",
+    "source": "NASA OSDR",
+    "category": "Muscle loss",
+    "citation": "NASA Open Science Data Repository (OSD-310), GeneLab",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-310"
+  },
+  {
+    "accession": "OSD-194",
+    "title": "Mitochondrial metabolic dysfunction and sarcomeric disruption in microgravity muscle wasting",
+    "description": "Transcriptional profiling of mitochondrial oxidative phosphorylation decline and fiber type transition from slow-twitch type I to fast-twitch type II.",
+    "source": "NASA OSDR",
+    "category": "Muscle loss",
+    "citation": "NASA Open Science Data Repository (OSD-194), Space Biology Program",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-194"
+  },
+  {
+    "accession": "OSD-452",
+    "title": "Cardiovascular deconditioning, baroreflex sensitivity, and carotid remodeling in astronauts",
+    "description": "Cephalad fluid redistribution, autonomic cardiovascular regulation shifts, resting tachycardia, and orthostatic intolerance upon gravitational transition.",
+    "source": "NASA OSDR",
+    "category": "Cardiovascular",
+    "citation": "NASA Open Science Data Repository (OSD-452), ALSDA",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-452"
+  },
+  {
+    "accession": "OSD-528",
+    "title": "Orbital spaceflight induces persistent T-cell dysregulation and latent herpesvirus shedding",
+    "description": "Suppression of cytotoxic T-lymphocyte function, altered Th1/Th2 cytokine balance, and reactivation of Epstein-Barr virus and Varicella-Zoster virus in crew members.",
+    "source": "NASA OSDR",
+    "category": "Immune system",
+    "citation": "NASA Open Science Data Repository (OSD-528), Human Research Program",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-528"
+  },
+  {
+    "accession": "OSD-704",
+    "title": "Biological effects of simulated galactic cosmic rays and solar particle events on human DNA",
+    "description": "Quantification of complex DNA double-strand breaks, gamma-H2AX foci persistence, and chromosomal aberrations induced by high-Z and energy (HZE) ions.",
+    "source": "NASA OSDR",
+    "category": "Radiation",
+    "citation": "NASA Open Science Data Repository (OSD-704), Space Radiation Element",
+    "url": "https://osdr.nasa.gov/bio/repo/search?q=OSD-704"
+  }
+]
+

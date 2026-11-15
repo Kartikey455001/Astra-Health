@@ -1,0 +1,39 @@
+[
+  {
+    "accession": "NTRS-20190001401",
+    "title": "Risk of Impaired Performance Due to Reduced Muscle Mass, Strength, and Endurance",
+    "description": "Evidence book evaluating human skeletal muscle atrophy in microgravity, efficacy of the T2 treadmill, CEVIS cycle ergometer, and ARED resistive exercise systems.",
+    "source": "NASA NTRS",
+    "category": "Muscle loss",
+    "citation": "NASA Human Research Program Evidence Book, NASA/TP-2019-220042",
+    "url": "https://ntrs.nasa.gov/citations/20190001401"
+  },
+  {
+    "accession": "NTRS-20200000854",
+    "title": "Risk of Early Onset Osteoporosis Due to Spaceflight",
+    "description": "Comprehensive evidence report documenting bone mineral loss rates, biochemical markers of bone turnover, and pharmaceutical countermeasures (bisphosphonates).",
+    "source": "NASA NTRS",
+    "category": "Bone loss",
+    "citation": "NASA Human Health Countermeasures Element, NASA/TM-2020-220455",
+    "url": "https://ntrs.nasa.gov/citations/20200000854"
+  },
+  {
+    "accession": "NTRS-20210015822",
+    "title": "Risk of Adverse Cognitive or Behavioral Conditions and Psychiatric Disorders in Exploration Missions",
+    "description": "Analysis of isolation, circadian desynchronization, workload distribution, and crew cohesion impacts during long-duration exploration.",
+    "source": "NASA NTRS",
+    "category": "Behavioral health",
+    "citation": "NASA Behavioral Health and Performance Evidence Report, NASA/TM-20210015822",
+    "url": "https://ntrs.nasa.gov/citations/20210015822"
+  },
+  {
+    "accession": "NTRS-20180002871",
+    "title": "Space Radiation Cancer Risk Projections and Uncertainties for Exploration Missions",
+    "description": "Biophysical modeling of heavy ion radiobiology, track structure physics, and tissue weighting factors for lunar and Mars surface scenarios.",
+    "source": "NASA NTRS",
+    "category": "Radiation",
+    "citation": "NASA Technical Publication, NASA/TP-2018-219800",
+    "url": "https://ntrs.nasa.gov/citations/20180002871"
+  }
+]
+

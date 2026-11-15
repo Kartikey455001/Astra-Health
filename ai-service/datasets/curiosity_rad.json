@@ -1,0 +1,30 @@
+[
+  {
+    "accession": "RAD-HASSLER-2014",
+    "title": "Mars' Surface Radiation Environment Measured with the Mars Science Laboratory's Curiosity Rover",
+    "description": "First real measurements of the radiation environment on the surface of Mars inside Gale Crater. Demonstrates an average surface dose equivalent rate of 0.64 ± 0.12 mSv/day.",
+    "source": "Curiosity RAD",
+    "category": "Radiation",
+    "citation": "Hassler et al., Science 343, 1244797 (2014)",
+    "url": "https://www.science.org/doi/10.1126/science.1244797"
+  },
+  {
+    "accession": "RAD-ZEITLIN-2013",
+    "title": "Measurements of Energetic Particle Radiation in Transit to Mars on the Mars Science Laboratory",
+    "description": "Crucial dosimetry data collected during 253 days of deep space interplanetary cruise from Earth to Mars, measuring an average dose equivalent rate of 1.84 ± 0.30 mSv/day.",
+    "source": "Curiosity RAD",
+    "category": "Radiation",
+    "citation": "Zeitlin et al., Science 340, 1080 (2013)",
+    "url": "https://www.science.org/doi/10.1126/science.1235989"
+  },
+  {
+    "accession": "RAD-PDS-INDEX",
+    "title": "Mars Science Laboratory RAD Calibrated Data Records (RDR V1.0)",
+    "description": "Calibrated energetic particle detector counts, LET spectra, and dosimetric channels archived on the Planetary Data System (PDS) Planetary Plasma Interactions Node.",
+    "source": "Curiosity RAD",
+    "category": "Radiation",
+    "citation": "PDS PPI Node MSL-M-RAD-3-RDR-V1.0",
+    "url": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/"
+  }
+]
+

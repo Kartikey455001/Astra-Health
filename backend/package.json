@@ -1,0 +1,21 @@
+{
+  "name": "astra-health-backend",
+  "version": "1.0.0",
+  "description": "ASTRA HEALTH - Node.js + Express + Socket.IO Backend with NASA Dataset Ingestion & Deterministic Health Engine",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": ["astronaut-health", "nasa-osdr", "donki", "rad", "lsda", "ntrs", "space-medicine"],
+  "author": "Innovators_X",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
+

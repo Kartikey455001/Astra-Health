@@ -1,0 +1,21 @@
+[
+  {
+    "accession": "DONKI-GUIDE-SEP",
+    "title": "NASA DONKI: Solar Energetic Particle (SEP) Events & Radiation Protection Protocols",
+    "description": "High-energy protons accelerated by solar flares and shocks. Operational protocols mandate checking mission-approved storm shelter procedures and monitoring real-time flux.",
+    "source": "NASA DONKI",
+    "category": "Radiation",
+    "citation": "NASA Space Radiation Analysis Group (SRAG) Operational Procedures",
+    "url": "https://ccmc.gsfc.nasa.gov/DONKI/"
+  },
+  {
+    "accession": "DONKI-GUIDE-FLR",
+    "title": "NASA DONKI: Solar Flares (FLR) Classification & Electromagnetic Effects",
+    "description": "Classification of solar flares from GOES X-ray flux (C, M, X class). Provides situational space weather alerts without direct translation to absorbed personal dose.",
+    "source": "NASA DONKI",
+    "category": "Radiation",
+    "citation": "Community Coordinated Modeling Center (CCMC) DONKI API",
+    "url": "https://ccmc.gsfc.nasa.gov/DONKI/"
+  }
+]
+

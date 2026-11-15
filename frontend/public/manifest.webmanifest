@@ -1,0 +1,16 @@
+{
+  "name": "ASTRA HEALTH — Mission Command",
+  "short_name": "ASTRA Health",
+  "description": "Offline-First Astronaut Health Monitoring & AI-Assisted Decision Support",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050b1d",
+  "theme_color": "#050b1d",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
