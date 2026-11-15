@@ -4,7 +4,12 @@
  * Gracefully falls back to offline local state when disconnected.
  */
 
-const BASE_URL = "/api";
+export const API_ORIGIN = import.meta.env.VITE_API_URL 
+  ? import.meta.env.VITE_API_URL.replace(/\/+$/, "")
+  : (import.meta.env.DEV ? "" : "https://astra-health-xuky.onrender.com");
+
+export const BASE_URL = `${API_ORIGIN}/api`;
+export const EVENTS_URL = `${BASE_URL}/events`;
 
 async function request(endpoint, options = {}) {
   try {

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
-import { api } from "../services/api";
+import { api, EVENTS_URL } from "../services/api";
 import { evaluateMetric, evaluateBehavioral, overallSeverity, METRICS } from "../utils/healthEngine";
 
 const AstraContext = createContext(null);
@@ -87,7 +87,7 @@ export function AstraProvider({ children }) {
   useEffect(() => {
     let eventSource = null;
     try {
-      eventSource = new EventSource("/api/events");
+      eventSource = new EventSource(EVENTS_URL);
       eventSource.onmessage = () => {
         refreshState();
       };
